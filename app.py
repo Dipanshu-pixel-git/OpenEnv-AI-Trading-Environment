@@ -18,13 +18,18 @@ env = TradingEnv(df)
 @app.post("/reset")
 def reset():
     state = env.reset()
-    return state.dict()
+    return {
+        "state": state.dict()
+    }
 
 @app.post("/step")
-def step(action: int):
-    result = env.step(action)
+def step(action: dict):
+    action_value = action.get("action", 0)
+
+    result = env.step(action_value)
+
     return {
         "state": result.state.dict(),
-        "reward": result.reward,
-        "done": result.done
+        "reward": float(result.reward),
+        "done": bool(result.done)
     }
