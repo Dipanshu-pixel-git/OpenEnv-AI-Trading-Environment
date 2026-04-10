@@ -2,16 +2,19 @@
 name = "openenv-trading-env"
 version = "0.1.0"
 description = "AI Trading Environment using OpenEnv"
-authors = [
-    {name = "Your Name"}
-]
+authors = [{name = "Your Name"}]
+
 dependencies = [
     "pandas",
     "numpy",
     "pydantic",
     "fastapi",
-    "uvicorn"
+    "uvicorn",
+    "openenv>=0.2.0"
 ]
+
+[project.scripts]
+server = "server.app:app"
 
 [tool.openenv]
 entry_point = "env.trading_env:TradingEnv"

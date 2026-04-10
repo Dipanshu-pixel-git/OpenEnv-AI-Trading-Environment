@@ -4,6 +4,6 @@ WORKDIR /app
 COPY . .
 
 RUN pip install -r requirements.txt
-RUN pip install fastapi uvicorn
+RUN pip install fastapi uvicorn openenv
 
-CMD ["uvicorn", "inference:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "server.app:app", "--host", "0.0.0.0", "--port", "7860"]
